@@ -1,0 +1,9 @@
+{
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.rulers": [
+        80
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
