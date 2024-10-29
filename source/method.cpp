@@ -1,5 +1,45 @@
 #include "../library/material.h"
 
+//appointment.cpp
+void appointment::add(){
+    string date; 
+    cout<<"Date MM/DD/YYYY : "; cin>>date;
+    string time;
+    cout<<"Time HH:MM : "; cin>>time;
+    string doctorID;
+    cout<<"DoctorID: "; cin>>doctorID;
+    if(doctor::ListOfDoctors.find(doctorID) == doctor::ListOfDoctors.end()){
+        cout<<"Undefined this DoctorID, cancel addition!!!";
+        return;
+    }
+    string PatientID;
+    cout<<"PatientID: "; cin>>PatientID;
+    if(patient::ListOfPatient.find(PatientID) == patient::ListOfPatient.end()){
+        cout<<"Undefined this PatientID, cancel addition!!!";
+        return;
+    }
+
+    cout<<"Addition completed !!";
+
+}
+
+void removeAppointment(){
+    string AppointmentID; 
+    cout<<"Enter AppointmentID need to remove: "; cin>>AppointmentID;
+    if( appointment::ListOfAppoinments.find(AppointmentID) == 
+        appointment::ListOfAppoinments.end() ){
+        cout<<"Invalid ID, cancel removal!!"<<endl;
+        return;
+    }
+    appointment::ListOfAppoinments.erase(AppointmentID);
+}
+
+void ShowAllAppointment(){
+    for(auto i: appointment::ListOfAppoinments){
+        i.second.display();
+    }
+}
+
 //patient.cpp
 
 void patient::add(){
@@ -88,6 +128,11 @@ void worker::add(){
     string WorkID;
     cout<<"WorkID: "; getline(cin,WorkID);
     this->WorkID = WorkID;
+
+    long double salary;
+    cout<<"Salary: "; cin>>salary;
+    this->salary = salary;
+    cin.ignore();
 }
 
 //person.cpp
